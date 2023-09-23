@@ -32,6 +32,16 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+
+    [";"] = { ":" },
+
+    ["<leader>h"] = false, -- Disable default for this mapping
+    ["<leader>hj"] = { ":Gitsigns next_hunk<cr>", desc = "Next hunk" },
+    ["<leader>hk"] = { ":Gitsigns prev_hunk<cr>", desc = "Previous hunk" },
+    ["<leader>ej"] = { "<cmd> lua vim.diagnostic.goto_next()<CR>", desc = "Go to next diagnostic" },
+    ["<leader>ek"] = { "<cmd> lua vim.diagnostic.goto_prev()<CR>", desc = "Go to previous diagnostic" },
+    ["H"] = { "<cmd>lua require('bufjump').backward()<cr>", desc = "Previous buffer" },
+    ["L"] = { "<cmd>lua require('bufjump').forward()<cr>", desc = "Next buffer" },
   },
   t = {
     -- setting a mapping to false will disable it

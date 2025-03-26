@@ -20,6 +20,47 @@ return {
       return opts
     end,
   },
+  -- customize telescope
+  -- TODO: fix fuzzy searching of incorrect casing (e.g. searching for fooBar should match foo_bar)
+  {
+    "nvim-telescope/telescope.nvim",
+    opts = function()
+      local actions = require "telescope.actions"
+      local get_icon = require("astronvim.utils").get_icon
+      return {
+        defaults = {
+          git_worktrees = vim.g.git_worktrees,
+          prompt_prefix = string.format("%s ", get_icon "Search"),
+          selection_caret = string.format("%s ", get_icon "Selected"),
+          path_display = {},
+          sorting_strategy = "ascending",
+          layout_strategy = "vertical",
+          layout_config = {
+            horizontal = {
+              prompt_position = "top",
+              preview_width = 0.55,
+            },
+            -- vertical = {
+            --   mirror = false,
+            -- },
+            width = 0.87,
+            height = 0.80,
+            -- preview_cutoff = 120,
+          },
+
+          mappings = {
+            i = {
+              ["<C-n>"] = actions.cycle_history_next,
+              ["<C-p>"] = actions.cycle_history_prev,
+              ["<C-j>"] = actions.move_selection_next,
+              ["<C-k>"] = actions.move_selection_previous,
+            },
+            n = { ["q"] = actions.close },
+          },
+        },
+      }
+    end,
+  },
   -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
   --

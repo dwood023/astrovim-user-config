@@ -12,6 +12,10 @@ return {
       null_ls.builtins.formatting.stylua,
       -- null_ls.builtins.formatting.prettier,
     }
+
+    -- Debug logging
+    -- config.log_level = "trace"
+
     return config -- return final config table
   end,
 }
